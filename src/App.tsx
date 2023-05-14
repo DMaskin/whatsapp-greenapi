@@ -11,9 +11,9 @@ function App() {
 
   // eslint-disable-next-line
   useEffect(() => {
-    const { isAuth, email } = checkAuth()
+    const { isAuth, idInstance, apiTokenInstance } = checkAuth()
     dispatch(setAuth(isAuth))
-    dispatch(setUser({ email, password: "" } as IUser))
+    dispatch(setUser({ idInstance, apiTokenInstance } as IUser))
   }, [])
 
   return (

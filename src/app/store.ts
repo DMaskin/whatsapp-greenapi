@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import userReducer from "../feature/user/userSlice"
+import chatReducer from "../feature/chat/chatSlice"
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
+    chat: chatReducer
   },
 })
 

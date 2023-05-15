@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 // @ts-ignore
 import noneAvatar from "../asset/none-avatar.png"
+import { useAppDispatch, useAppSelector } from "../../../app/hooks"
+import { addChat, selectChats, selectCurrentChat, setCurrentChat } from "../chatSlice"
 
 const ChatListStyled = styled.div`
   flex: 0 0 30%;
@@ -66,47 +68,64 @@ const ChatListStyled = styled.div`
     }
     
     .chat:hover {
-      background-color: #f0f2f5
+      background-color: #f5f6f6
+    }
+    
+    .chat__current {
+      background-color: #f0f2f5;
     }
   }
 `
 
 export function ChatList() {
+  const [username, setUsername] = useState("")
+  const chats = useAppSelector(selectChats)
+  const currentChat = useAppSelector(selectCurrentChat)
+  const dispatch = useAppDispatch()
+
+  function handleSearch() {
+    dispatch(addChat({chatId: username, messages: [] as string[]}))
+    setUsername("")
+    // await ChatApi.findUser(username,
+    //   (user) => setUser(user),
+    //   (e) => errorNotify(e))
+  }
+
+  function handleKey(e: React.KeyboardEvent<HTMLInputElement>) {
+    e.code === "Enter" && handleSearch()
+  }
+
+  function chatClickHandler(chatId: string) {
+    dispatch(setCurrentChat(chatId))
+  }
+
   return (
     <ChatListStyled>
       <header>
       </header>
       <div className="search">
-        <input type="text" placeholder={"Поиск или новый чат"}/>
+        <input type="text"
+               placeholder={"Поиск или новый чат"}
+               value={username}
+               onChange={(e) => setUsername(e.target.value)}
+               onKeyDown={handleKey}
+        />
       </div>
       <div className="chatList">
-        <div className="chat">
-          <div className="chat__avatar">
-            <img src={noneAvatar} alt="" />
+        {chats.map((chat) =>
+          <div className={chat.chatId === currentChat.chatId ? "chat chat__current" : "chat"}
+               onClick={() => chatClickHandler(chat.chatId)}>
+            <div className="chat__avatar">
+              <img src={noneAvatar} alt="" />
+            </div>
+            <div className="chat__info">
+              <span>{chat.chatId}</span>
+              <span className="chat__info__lastMessage">
+                {chat.messages[chat.messages.length - 1]}
+              </span>
+            </div>
           </div>
-          <div className="chat__info">
-            <span>Иван Иванов</span>
-            <span className="chat__info__lastMessage">Хорошо</span>
-          </div>
-        </div>
-        <div className="chat">
-          <div className="chat__avatar">
-            <img src={noneAvatar} alt="" />
-          </div>
-          <div className="chat__info">
-            <span>Иван Иванов</span>
-            <span className="chat__info__lastMessage">Хорошо</span>
-          </div>
-        </div>
-        <div className="chat">
-          <div className="chat__avatar">
-            <img src={noneAvatar} alt="" />
-          </div>
-          <div className="chat__info">
-            <span>Иван Иванов</span>
-            <span className="chat__info__lastMessage">Хорошо</span>
-          </div>
-        </div>
+        )}
       </div>
     </ChatListStyled>
   )

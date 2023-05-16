@@ -4,6 +4,6 @@ export interface IUser {
 }
 
 export interface IChat {
-  chatId: string,
+  chatId: string
   messages: string[]
 }

@@ -3,13 +3,13 @@ import { IChat } from "../../model"
 import { RootState } from "../../app/store"
 
 export interface ChatState {
-  chats: IChat[],
+  chats: IChat[]
   currentChat: IChat
 }
 
 const initialState: ChatState = {
   chats: [] as IChat[],
-  currentChat: { chatId: "", messages: [] as string[] } as IChat
+  currentChat: { chatId: "", messages: [] as string[] } as IChat,
 }
 
 export const chatSlice = createSlice({
@@ -26,10 +26,10 @@ export const chatSlice = createSlice({
     addMessage: (state, action: PayloadAction<string>) => {
       state.currentChat = {
         ...state.currentChat,
-        messages: [...state.currentChat.messages, action.payload]
+        messages: [...state.currentChat.messages, action.payload],
       }
-    }
-  }
+    },
+  },
 })
 
 export const selectChats = (state: RootState) => state.chat.chats

@@ -15,7 +15,7 @@ const ChatStyled = styled.div`
   width: calc(100% - 38px);
   height: calc(100% - 38px);
   max-width: 1600px;
-  box-shadow: 0 6px 18px rgba(11,20,26, .05);
+  box-shadow: 0 6px 18px rgba(11, 20, 26, 0.05);
   border-radius: 2px;
   display: flex;
 `
@@ -23,8 +23,8 @@ const ChatStyled = styled.div`
 export function Chat() {
   return (
     <ChatStyled>
-      <ChatList/>
-      <Dialog/>
+      <ChatList />
+      <Dialog />
     </ChatStyled>
   )
 }

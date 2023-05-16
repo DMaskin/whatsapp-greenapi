@@ -77,12 +77,12 @@ const LoginPageStyled = styled.div`
     button:hover {
       cursor: pointer;
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-      linear-gradient(104.34deg, #41522e -15.34%, #be8022 145.95%);
+        linear-gradient(104.34deg, #41522e -15.34%, #be8022 145.95%);
     }
 
     button:active {
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-      linear-gradient(104.34deg, #41522e -15.34%, #be8022 145.95%);
+        linear-gradient(104.34deg, #41522e -15.34%, #be8022 145.95%);
       cursor: pointer;
     }
 
@@ -104,7 +104,7 @@ export function LoginPage() {
     e.preventDefault()
     login({ idInstance, apiTokenInstance } as IUser).then(() => {
       dispatch(setAuth(true))
-      dispatch(setUser({idInstance, apiTokenInstance}))
+      dispatch(setUser({ idInstance, apiTokenInstance }))
       navigate(RouteNames.CHAT)
     })
   }
@@ -115,23 +115,18 @@ export function LoginPage() {
         <p>Авторизация</p>
         <div className="textField">
           <label htmlFor="idInstance">ID Instance:</label>
-          <input type="text"
-                 name="idInstance"
-                 value={idInstance}
-                 onChange={(e) => setIdInstance(e.target.value)}
-          />
+          <input type="text" name="idInstance" value={idInstance} onChange={(e) => setIdInstance(e.target.value)} />
         </div>
         <div className="textField">
           <label htmlFor="apiToken">API Token:</label>
-          <input type="text"
-                 name="apiToken"
-                 value={apiTokenInstance}
-                 onChange={(e) => setApiTokenInstance(e.target.value)}
+          <input
+            type="text"
+            name="apiToken"
+            value={apiTokenInstance}
+            onChange={(e) => setApiTokenInstance(e.target.value)}
           />
         </div>
-        <button type="submit">
-          Войти
-        </button>
+        <button type="submit">Войти</button>
       </form>
     </LoginPageStyled>
   )

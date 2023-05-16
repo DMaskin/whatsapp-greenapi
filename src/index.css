@@ -7,11 +7,11 @@
   --h-text-panel: 62px;
   --panel-header-background: #f0f2f5;
   --border-stronger: #e9edef;
-  --rich-text-panel-background: #f0f2f5
+  --rich-text-panel-background: #f0f2f5;
 }
 
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
-  color: var(--primary)
+  color: var(--primary);
 }

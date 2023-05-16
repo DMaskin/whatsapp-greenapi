@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import styled from "styled-components"
 import { selectCurrentChat } from "../chatSlice"
 import { useAppSelector } from "../../../app/hooks"
@@ -11,7 +11,7 @@ const MessageListStyled = styled.div`
   justify-content: start;
   align-items: start;
   flex-direction: column;
-  
+
   .message {
     max-width: 65%;
     min-height: 30px;
@@ -23,6 +23,7 @@ const MessageListStyled = styled.div`
     margin: 10px 20px;
     padding: 2px 5px;
     flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06), 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 `
 
@@ -31,9 +32,11 @@ export function MessageList() {
 
   return (
     <MessageListStyled>
-      {currenChat.messages.map((message, idx) =>
-        <div key={idx} className="message">{message}</div>
-      )}
+      {currenChat.messages.map((message, idx) => (
+        <div key={idx} className="message">
+          {message}
+        </div>
+      ))}
     </MessageListStyled>
   )
 }

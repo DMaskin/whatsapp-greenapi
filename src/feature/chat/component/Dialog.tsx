@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import styled from "styled-components"
 import { Input } from "./Input"
 import { MessageList } from "./MessageList"
@@ -10,13 +10,13 @@ const DialogStyled = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  
+
   header {
     width: 100%;
     height: var(--h-pane-header);
     background-color: var(--panel-header-background);
     border-left: 1px solid #d1d7db;
-    
+
     .header__currentChat {
       display: flex;
       height: 100%;
@@ -37,8 +37,8 @@ export function Dialog() {
       <header>
         <div className="header__currentChat">{currentChat.chatId}</div>
       </header>
-      <MessageList/>
-      <Input/>
+      <MessageList />
+      <Input />
     </DialogStyled>
   )
 }

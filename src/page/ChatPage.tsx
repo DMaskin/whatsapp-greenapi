@@ -5,7 +5,7 @@ import { Chat } from "../feature/chat/Chat"
 const ChatPageStyled = styled.div`
   height: 100vh;
   background-color: var(--app-background);
-  background-image: linear-gradient(180deg,var(--app-background),var(--app-background-deeper));
+  background-image: linear-gradient(180deg, var(--app-background), var(--app-background-deeper));
   z-index: 1;
   position: relative;
 
@@ -18,8 +18,8 @@ const ChatPageStyled = styled.div`
 export function ChatPage() {
   return (
     <ChatPageStyled>
-      <div className="head"/>
-      <Chat/>
+      <div className="head" />
+      <Chat />
     </ChatPageStyled>
   )
 }

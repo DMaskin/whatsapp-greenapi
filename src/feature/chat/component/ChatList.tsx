@@ -113,7 +113,7 @@ export function ChatList() {
       </div>
       <div className="chatList">
         {chats.map((chat) =>
-          <div className={chat.chatId === currentChat.chatId ? "chat chat__current" : "chat"}
+          <div key={chat.chatId} className={chat.chatId === currentChat.chatId ? "chat chat__current" : "chat"}
                onClick={() => chatClickHandler(chat.chatId)}>
             <div className="chat__avatar">
               <img src={noneAvatar} alt="" />

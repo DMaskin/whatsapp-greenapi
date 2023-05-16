@@ -31,8 +31,8 @@ export function MessageList() {
 
   return (
     <MessageListStyled>
-      {currenChat.messages.map((message) =>
-        <div className="message">{message}</div>
+      {currenChat.messages.map((message, idx) =>
+        <div key={idx} className="message">{message}</div>
       )}
     </MessageListStyled>
   )

@@ -9,7 +9,7 @@ export interface ChatState {
 
 const initialState: ChatState = {
   chats: [] as IChat[],
-  currentChat: {chatId: "", messages: [] as string[]} as IChat
+  currentChat: { chatId: "", messages: [] as string[] } as IChat
 }
 
 export const chatSlice = createSlice({
@@ -22,6 +22,12 @@ export const chatSlice = createSlice({
     setCurrentChat: (state, action: PayloadAction<string>) => {
       const newCurrentChat = state.chats.find((chat) => chat.chatId === action.payload)
       state.currentChat = newCurrentChat!
+    },
+    addMessage: (state, action: PayloadAction<string>) => {
+      state.currentChat = {
+        ...state.currentChat,
+        messages: [...state.currentChat.messages, action.payload]
+      }
     }
   }
 })
@@ -29,6 +35,6 @@ export const chatSlice = createSlice({
 export const selectChats = (state: RootState) => state.chat.chats
 export const selectCurrentChat = (state: RootState) => state.chat.currentChat
 
-export const {addChat, setCurrentChat} = chatSlice.actions
+export const { addChat, setCurrentChat, addMessage } = chatSlice.actions
 
 export default chatSlice.reducer
